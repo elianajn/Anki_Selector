@@ -16,14 +16,6 @@ class Embed_Deck(OpenAIClientBase):
         self.EMBEDDING_ENCODING = "cl100k_base"
         self.EMBEDDING_MODEL = "text-embedding-ada-002"
 
-    # def get_api_key(self):
-    #     self.api_key = os.environ.get(self.OPENAI_API_KEY_ENV_VAR)
-    #     assert self.api_key, f"API key not found\nSet your OpenAI API key as an environment variable named '{self.OPENAI_API_KEY_ENV_VAR}'"
-
-    # def set_openai_client(self, api_key):
-    #     self.client = OpenAI()
-    #     self.client.api_key = api_key
-
     def load_dataset(self, input_datapath):
         assert os.path.exists(input_datapath), f"{input_datapath} does not exist. Please check your file path."
         df = pd.read_csv(input_datapath, sep='\t', header=None, usecols=[0,1], names=["guid", "card"], comment='#').dropna()
@@ -59,11 +51,6 @@ class Embed_Deck(OpenAIClientBase):
         df.to_csv(output_path, index=False)
 
     def main(self):
-        # self.get_api_key()
-
-        # Set OpenAI API key
-        # self.set_openai_client(self.api_key)
-
         # Load and preprocess dataset
         input_datapath = os.path.join(os.getcwd(), self.DECK_TXT)
         df = self.load_dataset(input_datapath)
