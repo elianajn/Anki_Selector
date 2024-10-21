@@ -10,7 +10,6 @@ class Embed_Deck(OpenAIClientBase):
 
     def __init__(self):
         super().__init__()
-        self.OPENAI_API_KEY_ENV_VAR = 'OPENAI_API_KEY'
         self.DECK_TXT = 'anki.txt'
         self.MAX_TOKENS = 8000
         self.EMBEDDING_ENCODING = "cl100k_base"
