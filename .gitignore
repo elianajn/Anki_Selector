@@ -1,0 +1,6 @@
+*.txt
+*.csv
+Misc.md
+ppts/
+__pycache__/
+*.pptx
